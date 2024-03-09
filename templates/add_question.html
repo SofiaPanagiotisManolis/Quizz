@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}	
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+{% endfor %}
+
+<h1>Εισαγωγή ερώτησης</h1>
+<table class="table table-hover table-bordered table-striped">
+	{% for i in our_questions %}
+	
+		<tr>
+			<td>{{ i.id }}. <a href="{{ url_for('update', id=i.id)}}">{{ i.question_text }}</a> 
+				- <a href="{{ url_for('delete', id=i.id)}}"> Delete </a>
+			</td>	
+		</tr>
+	{% endfor %}
+</table>
+<div class="shadow p-3 mb-5 bg-body rounded">
+
+	<form method="POST">
+		
+		{{ form.hidden_tag() }}
+
+		{{ form.question.label(class="form-label") }}
+		{{ form.question(class="form-control") }}
+		<br/>
+		{{ form.option_A.label(class="form-label") }}
+		{{ form.option_A(class="form-control") }}
+		<br/>
+		{{ form.option_B.label(class="form-label") }}
+		{{ form.option_B(class="form-control") }}
+		<br/>
+		{{ form.option_C.label(class="form-label") }}
+		{{ form.option_C(class="form-control") }}
+		<br/>
+		{{ form.option_D.label(class="form-label") }}
+		{{ form.option_D(class="form-control") }}
+		<br/>
+		{{ form.correct_answer.label(class="form-label") }}
+		{{ form.correct_answer(class="form-control") }}
+		<br/> 
+		
+
+		{{form.category_id.label(class="form-label") }}
+ 		{{form.category_id(class="form-control", id="category_id") }}
+		
+		{{ form.submit(class="btn btn-secondary") }}
+		
+            
+	</form>
+</div>
+
+{% endblock %}

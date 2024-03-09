@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br>
+
+<h1> επιλογή κατηγορίας</h1>
+<table class="table table-hover table-bordered table-striped">
+  
+	{% for i in categories %}
+  <!-- ΝΑ ΕΠΙΛΕΞΟΥΜΕ ΑΝ ΘΑ ΕΧΕΙ ΔΙΟΡΘΩΣΗ ΚΑΙ ΔΙΑΓΡΑΦΗ ΚΑΤΗΓΟΡΙΑΣ -->
+  <!-- ΔΕΝ ΕΙΝΑΙ ΣΩΣΤΟ ΤΟ ΠΑΡΑΚΑΤΩ ΚΑΝΕΙ ΚΛΗΣΗ update/delete ΕΡΩΤΗΣΗΣ -->
+		<tr>
+			<td>{{ i.id }}. <a href="{{ url_for('update', id=i.id)}}">{{ i.name }}</a> 
+				- <a href="{{ url_for('delete', id=i.id)}}"> Delete </a>
+			</td>	
+		</tr>
+	{% endfor %}
+</table>
+
+
+<div class="row">
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card text-white bg-info" >
+            <div class="card-header">Header</div>
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-3">
+        <div class="card text-white bg-danger" >
+            <div class="card-header">Header</div>
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+      </div>
+    </div>
+
+
+      <div class="col-sm-3" >
+        
+        <div class="card text-white bg-success" >
+        <div class="card-header">Header</div>
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+  </div>
+{% endblock %}

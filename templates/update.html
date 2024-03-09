@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+{% endfor %}
+
+<h1>Ενημέρωση/τροποποίηση ερώτησης...</h1>
+<br/>
+<div class="shadow p-3 mb-5 bg-body rounded">
+	<form action="/update/{{ question_to_update.id }}" method="POST">
+		{{ form.hidden_tag() }}
+
+		{{ form.question.label(class="form-label") }}
+		{{ form.question(class="form-control", value=question_to_update.question_text) }}
+		<br/>
+		{{ form.option_A.label(class="form-label") }}
+		{{ form.option_A(class="form-control", value=question_to_update.option_A) }}
+		<br/>
+		{{ form.option_B.label(class="form-label") }}
+		{{ form.option_B(class="form-control", value=question_to_update.option_B) }}
+		<br/>
+		{{ form.option_C.label(class="form-label") }}
+		{{ form.option_C(class="form-control", value=question_to_update.option_C) }}
+		<br/>
+		{{ form.option_D.label(class="form-label") }}
+		{{ form.option_D(class="form-control", value=question_to_update.option_D) }}
+		<br/> 
+		{{ form.correct_answer.label(class="form-label") }}
+		{{ form.correct_answer(class="form-control", value=question_to_update.correct_answer) }}
+		<script>
+			document.querySelector('select[name="correct_answer"]').value = "{{question_to_update.correct_answer}}"
+		</script>
+		
+		<br>
+		{{ form.category_id.label(class="form-label") }}
+		{{ form.category_id(class="form-control", value=question_to_update.category_id) }}
+		<script>
+			document.querySelector('select[name="category_id"]').value = "{{question_to_update.category_id}}"
+		</script>
+		{{ form.submit(class="btn btn-secondary") }}
+
+	</form>
+</div>
+
+
+{% endblock %}

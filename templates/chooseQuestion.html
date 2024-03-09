@@ -1,0 +1,19 @@
+
+<!-- Εμφάνιση όλων των ερωτήσεων και επιλογή μίας για διόρθωση ή διαγραφή -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br>
+<h1> επιλογή ερώτησης</h1>
+
+<table class="table table-hover table-bordered table-striped">
+	{% for i in questions %}
+		<tr>
+			<td>{{ i.id }}. <a href="{{ url_for('update', id=i.id)}}">{{ i.question_text }}</a> 
+				- {{ categories_id_names[i.category_id]  }}<a href="{{ url_for('delete', id=i.id)}}"> Διαγραφή </a>
+			</td>	
+		</tr>
+	{% endfor %}
+</table>
+{% endblock %}
