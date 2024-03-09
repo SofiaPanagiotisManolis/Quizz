@@ -79,7 +79,7 @@ class UserForm(FlaskForm):
       
 
 
-@app.route('/user/add', methods=['GET', 'POST'])
+@app.route('/add_user', methods=['GET', 'POST'])
 def add_user():
 	name = None
 	form = UserForm()
@@ -117,4 +117,4 @@ def page_not_found(e):
 
 if __name__ == '__main__':
     #app.run(debug=True)host='0.0.0.0'
-	app.run(host='0.0.0.0')
+	app.run()
